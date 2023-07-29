@@ -9,7 +9,7 @@ from astropy.io import fits
 from astropy.table import Column
 from sklearn.metrics import silhouette_score
 #from sklearn.manifold import spectral_embedding
-from old_spectral_embedding import spectral_embedding
+from .old_spectral_embedding import spectral_embedding
 from sklearn.cluster import k_means
 
 def mat_smooth(Mat, S2Nmat, s2nlim = 3, scalpar = None, lscal = False):
@@ -1145,9 +1145,7 @@ class SpectralCloudstering(object):
 
         fig = plt.figure(figsize=(14, 8))
         ax = fig.add_subplot(111)
-                
-        ax.set_yscale('log')
-                
+
         cols = []
         
         # Plot the whole tree
@@ -1161,6 +1159,7 @@ class SpectralCloudstering(object):
             p.plot_tree(ax, structure=[dendro[cores_idx[i]]], color=cols[i], lw=3)
 
         ax.set_title("Final clustering configuration")
+        ax.set_yscale('log')
 
         ax.set_xlabel("Structure")
         ax.set_ylabel("Flux")
